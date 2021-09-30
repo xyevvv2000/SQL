@@ -6,3 +6,4 @@ select sysdate from dual;
 alter user hr account UNLOCK identified by 1234;
 
 -- git testing
+-- git testing 2
