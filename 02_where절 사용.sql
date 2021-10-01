@@ -142,4 +142,32 @@ WHERE commission_pct is null; -- 커미션 값이 입력되지 않은 직원들
 
 SELECT commission_pct
 FROM employees
-WHERE commission_pct is not null; -- 커미션 값이 입력되어 있는 직원들
+WHERE commission_pct is not null; -- 커미션 값이 입력되어 있는 
+
+-- ORDER BY 정렬 순서 지정 ASC(오름차순), DESC(내림차순)
+SELECT *
+FROM employees ORDER by employee_id ASC; -- 오름차순으로 정렬 ASC가 기본 (생략가능)
+
+SELECT *
+FROM employees ORDER by employee_id DESC; -- 내림차순으로 정렬
+
+-- 정렬할 열이 2개 이상일 때
+SELECT department_id, employee_id, first_name, last_name
+FROM employees
+ORDER BY department_id, employee_id; -- 부서 아이디로 먼저 정렬 후 고용인 아이디로 오름차순 정렬
+
+-- 별칭으로 정렬
+SELECT department_id, last_name, salary*12 연봉
+FROM employees ORDER BY 연봉 DESC;
+
+-- 예제
+SELECT employee_id, first_name, last_name
+FROM employees order by employee_id DESC;
+
+SELECT *
+FROM employees
+where job_id like '%CLERK%' order by salary DESC;
+
+SELECT first_name as 이름, employee_id 사원번호, department_id 부서, salary 급여 
+FROM employees
+WHERE employee_id BETWEEN 120 and 150 order by department_id DESC, salary DESC;
