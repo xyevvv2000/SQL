@@ -23,11 +23,10 @@ select job_id , replace (job_id, 'account', 'accnt') 적용결과
 FROM employees;
 
 -- 예제
-SELECT lower(last_name), upper(last_name), initcap(email)
-FROM employees;
+SELECT lower(last_name), upper(last_name), initcap(email) FROM employees;
 
-SELECT job_id, SUBSTR(job_id, 1, 2)
-FROM employees;
+SELECT job_id, SUBSTR(job_id, 1, 2) FROM employees; -- job_id와 job_id의 첫번째 문자에서 두번째 문자까지 출력
+
 
 -- 숫자형 함수
 
