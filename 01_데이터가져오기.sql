@@ -67,4 +67,3 @@ FROM EMPLOYEES;
 -- varchar(길이) - 문자열, number(길이,소숫점) - 숫자열, date - 날짜
 DESC EMPLOYEES;
 desc DEPARTMENTS;
-
