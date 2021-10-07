@@ -164,3 +164,41 @@ WHERE deptno = 30 ORDER BY empno;
 SELECT
     *
 FROM emp ORDER BY sal DESC;
+
+--문제34
+SELECT ename,sal,nvl(comm,0),sal+nvl(comm,0) total
+FROM emp ORDER BY total desc;
+
+--문제35
+SELECT ename,sal,to_char(sal*0.15,'$999.9') 회비
+FROM emp
+where sal between 1500 and 3000;
+
+--문제36
+SELECT d.dname, COUNT(DISTINCT e.empno)
+FROM emp e JOIN dept d on d.deptno = e.deptno
+GROUP BY d.dname HAVING COUNT(DISTINCT e.empno)>5;
+
+--문제37
+SELECT job, sum(sal)
+FROM emp
+where not job = 'SALESMAN'
+GROUP BY job HAVING SUM(SAL)>5000;
+
+--문제38
+SELECT e.empno,e.ename,e.sal,s.grade
+FROM emp e join salgrade s on e.sal BETWEEN s.losal and s.hisal;
+
+--문제39
+SELECT deptno,count(empno),count(comm)
+FROM emp group by deptno;
+
+--문제40
+SELECT ename,deptno,decode(deptno,10,'총무부',20,'개발부',30,'영업부')
+FROM emp;
+
+SELECT ename,deptno, case deptno 
+                                                when 10 then '총무부'
+                                                when 20 then '개발부'
+                                                else '영업부' end "부서명"
+FROM emp;
