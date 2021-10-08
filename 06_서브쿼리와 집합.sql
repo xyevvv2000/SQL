@@ -81,3 +81,47 @@ ORDER BY department_id;
 SELECT first_name, job_id, salary, department_id FROM employees
 where (job_id, salary) IN (select job_id, min(salary) from employees GROUP BY job_id) -- 직종 별 최저 급여 출력
 ORDER BY salary DESC;
+
+
+-- 집합
+
+-- UNION 합집합 : 중복된 부분을 제거한다 ( 115줄 )
+SELECT employee_id 직원번호, job_id 직종 FROM employees
+union
+SELECT employee_id, job_id from job_history;
+
+-- UNION ALL 합집합 : 중복된 부분이 반복된다 ( 117줄 2줄 중복 )
+SELECT employee_id 직원번호, job_id 직종 FROM employees
+union all
+SELECT employee_id, job_id from job_history;
+
+-- INTERSECT 교집합 : 교집합 부분이 출력된다 ( 중복된 2줄 )
+SELECT employee_id 직원번호, job_id 직종 FROM employees
+INTERSECT
+SELECT employee_id, job_id from job_history;
+
+-- MINUS 차집합 : A의 값에서 B의 값을 제거
+SELECT employee_id 직원번호, job_id 직종 FROM employees       --A
+union
+SELECT employee_id, job_id from job_history;        -- B
+
+-- 예제
+SELECT department_id FROM employees
+union
+SELECT department_id FROM departments;
+
+
+SELECT department_id FROM employees
+union all
+SELECT department_id FROM departments;
+
+
+SELECT department_id FROM employees
+INTERSECT
+SELECT department_id FROM departments;
+
+
+SELECT department_id FROM departments
+MINUS
+SELECT department_id FROM employees;
+
